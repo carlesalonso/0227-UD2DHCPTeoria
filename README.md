@@ -22,23 +22,24 @@ Carlos Alonso Martínez
 
 ## Servei DHCP (RFC 2131)
 
-* **D**ynamic **H**ost **C**onfiguration **P**rotocol.
-* Model client/servidor.
-* Assignació als clients dels paràmetres de xarxa:
-  * adreça
-  * màscara de subxarxa
-  * porta d’enllaç
-  * servidor de noms
+- **D**ynamic **H**ost **C**onfiguration **P**rotocol.
+- Model client/servidor.
+- Assignació als clients dels paràmetres de xarxa:
+  - adreça
+  - màscara de subxarxa
+  - porta d'enllaç
+  - servidor de noms
 
 ## DHCP vs configuració manual
 
-* Avantatges:
-  * **Zero configuracions**  per part dels usuaris.
-  * **Minimització errors** a la configuració de xarxa dels equips.
-  * **Facilitat de manteniment** : un canvi d’adreça, màscara o DNS es realitza directament al servidor.
-  * Permet  **reutilitzar**  adreces (exemple WiFi d’un bar).
-* Inconvenient:
-  * Cal assegurar el funcionament del servei DHCP (alta disponibilitat).
+- Avantatges:
+  - **Zero configuracions**  per part dels usuaris.
+  - **Minimització errors** a la configuració de xarxa dels equips.
+  - **Facilitat de manteniment** : un canvi d’adreça, màscara o DNS es realitza directament al servidor.
+  - Permet  **reutilitzar**  adreces (exemple WiFi d'un bar).
+
+- Inconvenient:
+  - Cal assegurar el funcionament del servei DHCP (alta disponibilitat).
 
 ## Tipus d’assignació
 
@@ -50,11 +51,11 @@ Carlos Alonso Martínez
 
 ## Detalls del protocol
 
-* Ports:
-  * Servidor 67 UDP
-  * **Client 68 UDP** 
-* El client utilitza un  *well* *kwown*  * port * herència del protocol de [bootstrap](https://es.wikipedia.org/wiki/Protocolo*de*arranque). Es necessita un port conegut perquè el client encara no té configuració i necessita saber a on enviar i a on rebrà els missatges.
-* A una mateixa xarxa poden conviure més d’un servidor DHCP.
+- Ports:
+  - Servidor 67 UDP
+  - **Client 68 UDP** 
+- El client utilitza un  *well* *kwown*  * port * herència del protocol de [bootstrap](https://es.wikipedia.org/wiki/Protocolo*de*arranque). Es necessita un port conegut perquè el client encara no té configuració i necessita saber a on enviar i a on rebrà els missatges.
+- A una mateixa xarxa poden conviure més d’un servidor DHCP.
 
 > Els well known ports són els ports originalment compresos entre el 0 i el 1023 i que l’IANA va reservar per serveis específics, tot i que avui la llista ha anat creixent. Es troben definits a la [RFC 1060](https://datatracker.ietf.org/doc/html/rfc1060)
 
@@ -92,8 +93,8 @@ Configurar el client perquè funcioni per DHCP, és molt senzill (per defecte el
 
 ## Configuració client automàtica
 
-* Anem per una situació força habitual:
-  * Què passa si el client està configurat per obtenir una adreça de forma automàtica, però no hi ha server DHCP disponible?
+- Anem per una situació força habitual:
+  - Què passa si el client està configurat per obtenir una adreça de forma automàtica, però no hi ha server DHCP disponible?
 
 És la situació que us podeu trobar si canvieu una VM de NAT a adaptador pont abans d’editar la configuració de xarxa.
 
@@ -113,23 +114,23 @@ Les IP duplicades es detecten al moment de la publicació (Gratuitous ARP)
 
 ## Servidors DHCP
 
-* Per disposar d’un servidor DHCP a la nostra xarxa disposem de diverses opcions:
-  * **Routers** : els routers d’accés a Internet disposen d’un servidor DHCP integrat.
-  * **Switch L3** : els switches més avançats també disposen d’aquest servei.
-  * **Servidors** : Windows Server i Linux poden oferir també el servei DHCP.
+- Per disposar d’un servidor DHCP a la nostra xarxa disposem de diverses opcions:
+  - **Routers** : els routers d’accés a Internet disposen d’un servidor DHCP integrat.
+  - **Switch L3** : els switches més avançats també disposen d’aquest servei.
+  - **Servidors** : Windows Server i Linux poden oferir també el servei DHCP.
 
-* En un servidor DHCP tindrem les següents opcions:
-  * **Marge d’adreces (range  o pool)**: conjunt d’adreces que s’oferiran.
-  * Configuració porta enllaç i servei de noms.
-  * **Temps de concessió** per les assignacions dinàmiques.
-  * Llistes per fer assignacions estàtiques.
+- En un servidor DHCP tindrem les següents opcions:
+  - **Marge d’adreces (range  o pool)**: conjunt d’adreces que s’oferiran.
+  - **Configuració porta enllaç i servei de noms**.
+  - **Temps de concessió** per les assignacions dinàmiques.
+  - Llistes per fer assignacions estàtiques.
 
-* Funcions addicionals:
-  * Creació d’àmbits per gestionar diverses xarxes.
-  * Interfícies per les que accepta peticions DHCP.
-  * Configuracions avançades:
-    * Configuració de servei horari, proxy, servidors correu...
-  * Configuració DHCP per IPv6.
+- Funcions addicionals:
+  - **Creació d’àmbits per gestionar diverses xarxes**.
+  - **Interfícies per les que accepta peticions DHCP**.
+  - **Configuracions avançades**:
+    - Configuració de servei horari, proxy, servidors correu...
+  - **Configuració DHCP per IPv6**.
 
 <img src="img/AA1-TeoriaDHCP_6.png" width=250px />
 
@@ -149,11 +150,11 @@ Reducció del trànsit en el segment de xarxa del servidor (les peticions seran 
 
 ## Atacs protocol DHCP
 
-* El protocol DHCP és sensible a una sèrie d’atacs:
-  * DHCP starvation
-  * DHCP spoofing
-    * DHCP rogue
-    * DHCP ACK injection
+- El protocol DHCP és sensible a una sèrie d’atacs:
+  - DHCP starvation
+  - DHCP spoofing
+    - DHCP rogue
+    - DHCP ACK injection
 
 <img src="img/AA1-TeoriaDHCP_10.png" width=128px />
 
@@ -174,7 +175,6 @@ Servidor il·legítim de DHCP que fem servir per configurar els equips de la xar
 L’atacant usa aquesta tècnica per modificar la configuració dels clients: MitM, DNS spoofing.
 
 <img src="img/AA1-TeoriaDHCP_12.png" width=250px />
-
 
 ## DHCP ACK injection
 
@@ -198,9 +198,9 @@ Eines de monitorització i detecció de servidors de DHCP no autoritzats utilitz
 
 ## Autoria i llicenciament
 
-* Aquests materials han estat elaborats per:
-  * Carlos Alonso Martínez
+- Aquests materials han estat elaborats per:
+  - Carlos Alonso Martínez
 
 <img src="img/AA1-TeoriaDHCP_15.png" width=250px />
 
-**(CC BY-NC-ND 4.0)** 
+**(CC BY-NC-ND 4.0)**
