@@ -61,7 +61,18 @@ Carlos Alonso Martínez
 
 ## Negociació DHCP
 
-<img src="img/AA1-TeoriaDHCP_1.png" width=250px />
+```mermaid
+
+sequenceDiagram
+    participant C as CLIENT
+    participant S as SERVER
+
+    C->>S: DISCOVER
+    S-->>C: OFFER
+    C->>S: REQUEST
+    S-->>C: ACK/NAK
+
+```
 
 El trànsit de client s’envia per broadcast local per tal d’arribar a tots els possibles servidors.
 
